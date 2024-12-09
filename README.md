@@ -25,18 +25,36 @@ This project uses `pydub` to remove silences from audio files.
 
 ## Usage
 
+### For a single audio file
+
 1. Run the script to remove silences with the path to the input audio file:
 
    ```sh
    python remove_silence.py "path/to/input/audiofile.m4a"
    ```
 
-2. The processed audio files will be saved in the input audio file's directory with the suffix `_no_silence`.
+2. The processed audio files will be saved in the input audio file's directory with the suffix `_processed`.
 
-## Example
+#### Example
 
 ```sh
 python remove_silence.py "Downloads/audiofile.m4a"
+```
+
+### For multiple audio files
+
+1. Run the script to remove silences with the path to the input audio files directory:
+
+   ```sh
+   python remove_silence_batch.py "path/to/input/audiofiles"
+   ```
+
+2. The processed audio files will be saved in the input audio files directory with the suffix `_processed`.
+
+#### Example
+
+```sh
+python remove_silence_batch.py "Downloads/audiofiles"
 ```
 
 ## Dependencies
