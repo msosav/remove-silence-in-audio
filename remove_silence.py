@@ -4,13 +4,12 @@ import sys
 import os
 
 
-def remove_silence(input_path, output_path):
+def remove_silence(input_path):
     """
     Removes silence from an audio file and exports the processed audio to a new file.
 
     Args:
         input_path (str): The file path to the input audio file.
-        output_path (str): The file path to save the processed audio file.
 
     Returns:
         None
@@ -42,6 +41,9 @@ def remove_silence(input_path, output_path):
         for chunk in audio_chunks:
             converted_audio += chunk
 
+        base, ext = os.path.splitext(input_path)
+        output_path = f"{base}_processed.wav"
+
         converted_audio.export(output_path, format="wav")
 
         print(f"Silence removed: {output_path}")
@@ -57,5 +59,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     input_path = sys.argv[1]
-    silence_removed_path = os.path.splitext(input_path)[0] + "_no_silence.wav"
-    remove_silence(input_path, silence_removed_path)
+    remove_silence(input_path)
