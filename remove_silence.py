@@ -5,6 +5,16 @@ import os
 
 
 def convert_m4a_to_wav(input_file, output_file):
+    """
+    Converts an audio file from M4A format to WAV format.
+    Args:
+        input_file (str): The path to the input M4A file.
+        output_file (str): The path where the output WAV file will be saved.
+    Returns:
+        None
+    Raises:
+        Exception: If there is an error during the conversion process.
+    """
     try:
         audio = AudioSegment.from_file(input_file, format="m4a")
 
@@ -15,6 +25,14 @@ def convert_m4a_to_wav(input_file, output_file):
 
 
 def remove_silence(input_path, output_path):
+    """
+    Removes silence from an audio file and exports the processed audio to a new file.
+    Args:
+        input_path (str): The file path to the input audio file.
+        output_path (str): The file path to save the processed audio file.
+    Returns:
+        None
+    """
     audio = AudioSegment.from_file(input_path, format="wav")
 
     audio_chunks = split_on_silence(audio,
@@ -33,6 +51,18 @@ def remove_silence(input_path, output_path):
 
 
 def remove_aux_file():
+    """
+    Removes the auxiliary file 'output.wav' from the current directory.
+
+    This function deletes the file named 'output.wav' if it exists in the
+    current working directory. It is typically used to clean up temporary
+    files generated during audio processing.
+
+    Raises:
+        FileNotFoundError: If the file 'output.wav' does not exist.
+        PermissionError: If the file 'output.wav' cannot be deleted due to
+                         insufficient permissions.
+    """
     os.remove("output.wav")
 
 
